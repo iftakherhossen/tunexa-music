@@ -1,38 +1,58 @@
-.App {
-  text-align: center;
+.bgColor {
+  background-color: #282c34 !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.text-white {
+  color: white !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navBtn {
+  margin: 0.3rem !important;
+  color: white !important;
+  display: block !important;
+  font-size: 16px !important;
+  letter-spacing: 1.5px !important;
+  padding: 0.4rem 1.1rem !important;
+  font-weight: 500;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.navBtn:hover {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.title {
+  color: white !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.wrapper {
+  position: relative;
+  width: 30.5%;
+}
+
+.hoverImg {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.hoverBtn {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.wrapper:hover .hoverImg {
+  opacity: 0.1;
+}
+
+.wrapper:hover .hoverBtn {
+  opacity: 1;
 }
