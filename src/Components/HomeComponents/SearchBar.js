@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Container, Grid, Toolbar } from '@mui/material';
 import SearchBar from "material-ui-search-bar";
 import SearchItem from './SearchItem';
-import { Box } from '@mui/system';
 
 const SearchBarComponent = () => {
      const [search, setSearch] = useState('');
@@ -25,7 +24,7 @@ const SearchBarComponent = () => {
 
      const requestSearch = (searchedValue) => {          
           const filteredItems = musicsAndPlaylists.filter((item) => {
-               return item.name.toLowerCase().includes(searchedValue.toLowerCase());            
+               return item.name.toLowerCase().charAt(0).includes(searchedValue.toLowerCase());            
           });
 
           setItems(filteredItems);
@@ -53,7 +52,7 @@ const SearchBarComponent = () => {
                     <Grid container spacing={2} column={3} sx={{ mt: 1 }}>
                          {
                               items.map((item) => <SearchItem 
-                                   key={item.id}
+                                   key={item._id}
                                    item={item}
                               />)
                          } 

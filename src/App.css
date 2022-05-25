@@ -56,3 +56,7 @@
 .wrapper:hover .hoverBtn {
   opacity: 1;
 }
+
+.cardHover:hover {
+  cursor: pointer;
+}

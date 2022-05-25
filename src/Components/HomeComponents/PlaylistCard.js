@@ -1,10 +1,35 @@
-import { Box, Card, CardContent, Checkbox, Grid, IconButton, Typography } from '@mui/material';
-import React from 'react';
+import { Box, Card, CardContent, Grid, IconButton, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 
+const useAudio = url => {
+     const track = url.map(t => { return t });
+     const [audio] = useState(new Audio(track));
+     console.log(track)
+     const [playing, setPlaying] = useState(false);
+   
+     const toggle = () => setPlaying(!playing);
+   
+     useEffect(() => {
+         playing ? audio.play() : audio.pause();
+     }, [playing, audio]);
+   
+     useEffect(() => {
+          audio.addEventListener('ended', () => setPlaying(false));
+          return () => {
+               audio.removeEventListener('ended', () => setPlaying(false));
+          };
+     }, [audio]);
+   
+     return [playing, toggle];
+};
+
 const PlaylistCard = ({ playlist }) => {
-     const { name, createdBy, cover, musics } = playlist;
+     const { name, createdBy, musics } = playlist;
+     const track = musics.map(music => {return music.audio});
+     console.log(track)
+     const [playing, toggle] = useAudio(track);
 
      return (
           <Grid item xs={12} sm={6} md={4}>
@@ -17,9 +42,9 @@ const PlaylistCard = ({ playlist }) => {
                          </CardContent>                         
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', pr: 1.5, my: -1 }}>
-                         <IconButton aria-label="play/pause">
-                              <Checkbox icon={<PlayArrowIcon sx={{ fontSize: 30 }} />} checkedIcon={<PauseIcon sx={{ fontSize: 30 }} />} sx={{ height: 30, width: 30 }} />
-                         </IconButton>                              
+                    <IconButton aria-label="play/pause" onClick={toggle}>
+                         {playing === true ? <PauseIcon sx={{ fontSize: 25, color: 'green' }} /> : <PlayArrowIcon sx={{ fontSize: 25 }} />}
+                    </IconButton>                           
                     </Box>
                </Card>
           </Grid>
