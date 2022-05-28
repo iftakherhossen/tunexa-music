@@ -1,21 +1,18 @@
-import { Container, Grid, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
 import MusicCard from './MusicCard';
 import musics from '../../assets/database/musics';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
 
 const MusicHolder = () => {
-     // const [musics, setMusics] = useState([]);
-
-     // useEffect(() => {
-     //      fetch(Audios)
-     //           .then(res => res.json())
-     //           .then(data => setMusics(data));
-     // }, []);
-
      return (
-          <Box sx={{ mt: 4, mb: 8 }}>              
-               <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 600 }}>Trending</Typography>
+          <Box sx={{ mt: 4, mb: 8 }}> 
+               <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <MusicNoteIcon sx={{ fontSize: 35, mr: 1 }} />
+                    <Typography component="div" variant="h4" sx={{ fontWeight: 600, fontFamily: 'Macondo, cursive' }}>Trending</Typography>                   
+               </Box>
+
                <Grid container spacing={2} column={3} sx={{ mt: 1.5 }}>
                     {
                          musics.map((music) =>

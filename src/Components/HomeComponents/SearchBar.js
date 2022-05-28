@@ -1,31 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { Container, Grid, Toolbar } from '@mui/material';
 import SearchBar from "material-ui-search-bar";
 import SearchItem from './SearchItem';
+import musics from '../../assets/database/musics'
+import playlists from '../../assets/database/playlists'
 
 const SearchBarComponent = () => {
      const [search, setSearch] = useState('');
-     const [musics, setMusics] = useState([]);
-     const [playlists, setPlaylists] = useState([]);
-     const musicsAndPlaylists = [...musics, ...playlists];
      const [items, setItems] = useState([]);
 
-     useEffect(() => {
-          fetch('./musics.json')
-               .then(res => res.json())
-               .then(data => setMusics(data));
-     }, []);
-
-     useEffect(() => {
-          fetch('./playlists.json')
-               .then(res => res.json())
-               .then(data => setPlaylists(data));
-     }, []);
-
      const requestSearch = (searchedValue) => {          
-          const filteredItems = musicsAndPlaylists.filter((item) => {
-               return item.name.toLowerCase().charAt(0).includes(searchedValue.toLowerCase());            
+          const filteredByMusic = musics.filter((item) => {
+               const name = item.name.toLowerCase().charAt(0).includes(searchedValue.toLowerCase());
+               const singer = item.singer.toLowerCase().includes(searchedValue.toLowerCase());
+               const language = item.language.toLowerCase().includes(searchedValue.toLowerCase());
+
+               return name || singer || language ;
           });
+          const filteredByPlaylist = playlists.filter((item) => {
+               return item.name.toLowerCase().charAt(0).includes(searchedValue.toLowerCase());
+          });
+
+          const filteredItems = [...filteredByMusic, ...filteredByPlaylist];
 
           setItems(filteredItems);
      };
@@ -37,15 +33,16 @@ const SearchBarComponent = () => {
      };
 
      return (
-          <Grid container sx={{ mt: { xs: 16, md: 20 } , display: 'flex', justifyContent: 'center' }}>
+          <Grid container sx={{ mt: { xs: 16, md: 12 } , display: 'flex', justifyContent: 'center' }}>
                <Grid item xs={10} sm={9} md={7} sx={{ mt: { md: 2 }, mb: 5 }}>
                     <SearchBar
                          value={search}
                          onChange={(searchedValue) => requestSearch(searchedValue)}
                          onCancelSearch={() => cancelSearch()}
-                         placeholder="Search Music..."
-                         style={{ borderRadius: 10, backgroundColor: '#E7EAF4' }}
+                         placeholder="Search Music or Playlist..."
+                         style={{ borderRadius: 25, backgroundColor: '#E7EAF4', fontFamily: 'Macondo, cursive' }}
                          autoFocus
+                         className='font-macondo'
                     />
                </Grid> 
                <Container>
