@@ -1,5 +1,5 @@
 import React, {  useState } from 'react';
-import { Backdrop, Box, Container, Fade, Grid, Modal, Toolbar, Typography } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 import SearchBar from "material-ui-search-bar";
 import SearchItem from './SearchItem';
 import musics from '../../assets/database/musics';
@@ -8,9 +8,6 @@ import playlists from '../../assets/database/playlists';
 const SearchBarComponent = () => {
      const [search, setSearch] = useState('');
      const [items, setItems] = useState([]);
-     const [open, setOpen] = useState(false);
-     const handleOpen = () => setOpen(true);
-     const handleClose = () => setOpen(false);
 
      const requestSearch = (searchedValue) => {          
           const filteredByMusic = musics.filter((item) => {
