@@ -1,13 +1,16 @@
 import React, {  useState } from 'react';
-import { Container, Grid, Toolbar } from '@mui/material';
+import { Backdrop, Box, Container, Fade, Grid, Modal, Toolbar, Typography } from '@mui/material';
 import SearchBar from "material-ui-search-bar";
 import SearchItem from './SearchItem';
-import musics from '../../assets/database/musics'
-import playlists from '../../assets/database/playlists'
+import musics from '../../assets/database/musics';
+import playlists from '../../assets/database/playlists';
 
 const SearchBarComponent = () => {
      const [search, setSearch] = useState('');
      const [items, setItems] = useState([]);
+     const [open, setOpen] = useState(false);
+     const handleOpen = () => setOpen(true);
+     const handleClose = () => setOpen(false);
 
      const requestSearch = (searchedValue) => {          
           const filteredByMusic = musics.filter((item) => {
@@ -24,6 +27,7 @@ const SearchBarComponent = () => {
           const filteredItems = [...filteredByMusic, ...filteredByPlaylist];
 
           setItems(filteredItems);
+          handleOpen()
      };
 
      const cancelSearch = () => {
@@ -45,16 +49,16 @@ const SearchBarComponent = () => {
                          className='font-macondo'
                     />
                </Grid> 
+
                <Container>
-                    <Grid container spacing={2} column={3} sx={{ mt: 1 }}>
+                    <Grid container spacing={2} column={3}>                                        
                          {
                               items.map((item) => <SearchItem 
                                    key={item._id}
                                    item={item}
                               />)
-                         } 
+                         }                                        
                     </Grid>
-                    {items.length > 1 && <Toolbar />}
                </Container>
           </Grid>
      );

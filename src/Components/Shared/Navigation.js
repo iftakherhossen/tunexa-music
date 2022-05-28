@@ -43,8 +43,45 @@ const Navigation = () => {
                     >
                          <Link to="/" className="title">Tunex</Link>
                     </Typography>
+                    <Box
+                         sx={{
+                              flexGrow: 1,
+                              display: { xs: "none", md: "flex" },
+                              justifyContent: "flex-end",
+                              alignItems: "center",
+                         }}
+                    >
+                         <Link to="/" style={{ textDecoration: 'none' }}>
+                              <Button className="navBtn" sx={{ fontFamily: 'Macondo, cursive' }}>Home</Button>
+                         </Link>
+                         <Link to="/explore" style={{ textDecoration: "none" }}>
+                              <Button className="navBtn">Explore</Button>
+                         </Link>
+                    </Box>               
 
-                    <Box sx={{ flexGrow: 0, display: { xs: "flex", md: "none" } }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
+                         <Avatar src="https://i.ibb.co/dm8Qchx/2.png" alt="Logo" sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                         <Typography
+                              variant="h5"
+                              noWrap
+                              sx={{
+                                   mr: 2,
+                                   display: { xs: "flex", md: "none" },
+                                   fontWeight: 600,
+                                   fontSize: "1.7rem",
+                                   letterSpacing: ".1rem",
+                                   color: "white",
+                                   textDecoration: "none",
+                                   justifyContent: 'center',
+                                   fontFamily: 'Macondo, cursive'
+                              }}
+                              className="title"
+                         >
+                              <Link to="/">Tunex</Link>
+                         </Typography>
+                    </Box>
+
+                    <Box sx={{ flexGrow: 0, display: { xs: "flex", md: "none" }, justifyContent: 'flex-end' }}>
                          <IconButton
                               size="large"
                               aria-label="menu bar"
@@ -84,44 +121,6 @@ const Navigation = () => {
                                    </MenuItem>
                               </Box>                              
                          </Menu>
-                    </Box>
-
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                         <Avatar src="https://i.ibb.co/dm8Qchx/2.png" alt="Logo" sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                         <Typography
-                              variant="h5"
-                              noWrap
-                              sx={{
-                                   mr: 2,
-                                   display: { xs: "flex", md: "none" },
-                                   fontWeight: 600,
-                                   fontSize: "1.7rem",
-                                   letterSpacing: ".1rem",
-                                   color: "white",
-                                   textDecoration: "none",
-                                   justifyContent: 'center',
-                                   fontFamily: 'Macondo, cursive'
-                              }}
-                              className="title"
-                         >
-                              <Link to="/">Tunex</Link>
-                         </Typography>
-                    </Box>
-
-                    <Box
-                         sx={{
-                              flexGrow: 1,
-                              display: { xs: "none", md: "flex" },
-                              justifyContent: "center",
-                              alignItems: "center",
-                         }}
-                    >
-                         <Link to="/" style={{ textDecoration: 'none' }}>
-                              <Button className="navBtn" sx={{ fontFamily: 'Macondo, cursive' }}>Home</Button>
-                         </Link>
-                         <Link to="/explore" style={{ textDecoration: "none" }}>
-                              <Button className="navBtn">Explore</Button>
-                         </Link>
                     </Box>
                </Toolbar>
           </Container>
