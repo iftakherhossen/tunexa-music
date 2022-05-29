@@ -15,8 +15,19 @@ code {
     monospace;
 }
 
-
 a {
   color: #fff;
   text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent !important; 
 }

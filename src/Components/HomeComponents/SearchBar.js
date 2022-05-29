@@ -24,7 +24,6 @@ const SearchBarComponent = () => {
           const filteredItems = [...filteredByMusic, ...filteredByPlaylist];
 
           setItems(filteredItems);
-          handleOpen()
      };
 
      const cancelSearch = () => {
