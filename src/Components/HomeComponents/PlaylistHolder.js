@@ -16,9 +16,7 @@ const PlaylistHolder = () => {
                <Container>
                     <Grid container spacing={2} column={3} sx={{ mt: 1.5 }}>
                          {
-                              playlists.map((playlist) =>
-                                   <PlaylistCard key={playlist._id} playlist={playlist} />
-                              )
+                              playlists.map((playlist) => <PlaylistCard key={playlist._id} playlist={playlist} />)
                          }
                     </Grid>
                </Container>

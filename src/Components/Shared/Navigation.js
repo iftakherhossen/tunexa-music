@@ -77,7 +77,7 @@ const Navigation = () => {
                               }}
                               className="title"
                          >
-                              <Link to="/">Tunex</Link>
+                              <Link to="/">Tunexa</Link>
                          </Typography>
                     </Box>
 
@@ -116,7 +116,7 @@ const Navigation = () => {
                                    </MenuItem>
                                    <MenuItem>
                                         <Link to="/explore" style={{ textDecoration: 'none', color: '#282c34', fontWeight: 600, padding: '0 10px' }}>
-                                             Explore
+                                             Radio
                                         </Link>
                                    </MenuItem>
                               </Box>                              
